@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from api.Routes.helloWorld import hello_world_bp
+from api.Routes.Categories import categories_bp
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,6 +12,7 @@ def create_app():
     CORS(app, supports_credentials=True)
 
     app.register_blueprint(hello_world_bp, url_prefix='/helloWorld')
+    app.register_blueprint(categories_bp, url_prefix='/categories')
 
     def add_response_headers(response):
         response.headers.add('Access-Control-Allow-Origin', '*')
