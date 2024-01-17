@@ -12,3 +12,8 @@ body {
   min-width: 100dvw;
   background-color: #343541;
 }
+
+#root {
+  min-height: 100dvh;
+  min-width: 100dvw;
+}
