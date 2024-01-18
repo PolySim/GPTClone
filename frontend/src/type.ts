@@ -6,5 +6,5 @@ export type CategoriesContextType = {
 export type Category = {
   index: number;
   name: string;
-  date: Date;
+  date: number;
 };
