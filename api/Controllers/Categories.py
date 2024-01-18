@@ -10,35 +10,34 @@ DATE = format_date()
 
 def get_categories_sorted_date():
     try:
-        categories = {
-            "Aujourd'hui": [],
-            "Hier": [],
-            "7 derniers jours": [],
-            "30 derniers jours": [],
-
-        }
+        categories = [
+            {"title": "Aujourd'hui", "categories": []},
+            {"title": "Hier", "categories": []},
+            {"title": "7 derniers jours", "categories": []},
+            {"title": "30 derniers jours", "categories": []},
+        ]
         categories_json = read_json(CATEGORIES_PATH)
         for category in categories_json:
             if category["date"] == DATE:
-                categories["Aujourd'hui"].append({
+                categories[0]["categories"].append({
                     'index': category["index"],
                     'name': category["name"],
                     'date': category["date"],
                 })
             elif category["date"] == DATE - 1:
-                categories["Hier"].append({
+                categories[1]["categories"].append({
                     'index': category["index"],
                     'name': category["name"],
                     'date': category["date"],
                 })
             elif category["date"] > DATE - 8:
-                categories["7 derniers jours"].append({
+                categories[2]["categories"].append({
                     'index': category["index"],
                     'name': category["name"],
                     'date': category["date"],
                 })
             elif category["date"] > DATE - 31:
-                categories["30 derniers jours"].append({
+                categories[3]["categories"].append({
                     'index': category["index"],
                     'name': category["name"],
                     'date': category["date"],
